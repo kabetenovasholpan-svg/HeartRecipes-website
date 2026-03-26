@@ -1,0 +1,699 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HeartRecipes</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  body { font-family: 'Open Sans', sans-serif; margin: 0; background-color: #FCC5BB; text-align: center; }
+  nav { background-color: #e91e63; padding: 15px; }
+  nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: 600; }
+  
+  header { position: relative; padding: 100px 20px; color: white; overflow: hidden; }
+  header::before {
+    content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: url("https://images.unsplash.com/photo-1494390248081-4e521a5940db?q=80&w=1106&auto=format&fit=crop") no-repeat center center;
+    background-size: cover; filter: blur(5px) brightness(0.7); z-index: 0;
+  }
+  header * { position: relative; z-index: 1; }
+  header h1 { font-family: 'Lobster Two', cursive; font-size: 60px; background: rgba(255, 255, 255, 0.8); display: inline-block; padding: 10px 40px; border-radius: 15px; color: #e91e63; }
+
+  /* Frame for "Start Here" */
+  .section h2 {
+    font-family: 'Lobster Two', cursive;
+    font-size: 40px;
+    background: white;
+    display: inline-block;
+    padding: 10px 30px;
+    border-radius: 10px;
+    color: #e91e63;
+  }
+
+  /* Frame for Random Recipe Result */
+  #result-container { margin-top: 20px; height: 80px; }
+  .recipe-link {
+    font-family: 'Lobster Two', cursive;
+    font-size: 28px;
+    color: #e91e63;
+    background: white;
+    padding: 10px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  button { padding: 12px 20px; background-color: #e91e63; color: white; border: none; cursor: pointer; font-weight: 600; border-radius: 5px; }
+  .card { background: white; padding: 20px; margin: 15px; display: inline-block; width: 250px; border-radius: 10px; vertical-align: top; }
+  .card-img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 10px; }
+  footer { padding: 20px; background-color: #e91e63; color: white; }
+</style>
+</head>
+<body style="font-family: 'Open Sans', sans-serif; background-color: #FCC5BB; margin: 0; padding: 0; text-align: center;">
+
+  <nav style="background-color: #e91e63; width: 100%; margin: 0; padding: 20px 0; display: block; box-sizing: border-box; position: relative;">
+    
+    <a href="index.html">
+      <img src="https://i.ibb.co/qHCLryP/Group-8.png" alt="HeartRecipes Logo" style="height: 45px; position: absolute; left: 20px; top: 50%; transform: translateY(-50%);">
+    </a>
+
+    <a href="index.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Home</a>
+    <a href="about.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">About</a>
+    <a href="quick.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Quick Recipes</a>
+    <a href="mealprep.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Meal Prep</a>
+    <a href="blog.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Blog</a>
+    <a href="credits.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Credits</a>
+    
+  </nav> </body>
+<header style="text-align: center; padding: 100px 20px; position: relative;">
+  <h1 style="font-family: 'Lobster Two', cursive; font-size: 60px; background: rgba(255, 255, 255, 0.8); display: inline-block; padding: 10px 40px; border-radius: 15px; color: #e91e63; margin-bottom: 10px;">
+    HeartRecipes
+  </h1>
+  
+  <br>
+
+  <p style="font-family: 'Lobster Two', cursive; font-size: 28px; color: #e91e63; background: white; display: inline-block; padding: 8px 25px; border-radius: 10px; margin-top: 5px; font-weight: 400;">
+    💗 Healthy meals for busy lives
+  </p>
+  
+  <br><br>
+
+  <button onclick="randomRecipe()" style="padding: 12px 20px; background-color: #e91e63; color: white; border: none; cursor: pointer; font-weight: 600; border-radius: 5px;">
+    Random Recipe 🎲
+  </button>
+  
+  <div id="result-container" style="margin-top: 20px;">
+    <div id="result"></div>
+  </div>
+</header>
+
+<div class="section">
+  <h2>Start here</h2>
+  <br>
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1589632707321-72bbab9f1249?q=80&w=735&auto=format&fit=crop" class="card-img">
+    <h3>Quick Breakfasts</h3>
+    <p>Ready in under 10 minutes</p>
+  </div>
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1510629954389-c1e0da47d414?w=600&auto=format&fit=crop" class="card-img">
+    <h3>15-Minute Lunches</h3>
+    <p>Fast and balanced meals</p>
+  </div>
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1644704265419-96ddaf628e71?q=80&w=1170&auto=format&fit=crop" class="card-img">
+    <h3>High-Protein Dinners</h3>
+    <p>Stay full and energised</p>
+  </div>
+</div>
+
+<footer><p>© 2026 HeartRecipes</p></footer>
+
+<script>
+function randomRecipe() {
+  const recipes = [
+    { name: "Avocado Egg Toast", link: "quick.html#egg-toast" },
+    { name: "Chicken Wrap", link: "quick.html#chicken-wrap" },
+    { name: "Greek Yogurt Bowl", link: "quick.html#yogurt-bowl" },
+    { name: "Egg Muffins", link: "mealprep.html#egg-muffins" }
+  ];
+
+  let choice = recipes[Math.floor(Math.random() * recipes.length)];
+  document.getElementById("result").innerHTML = `<a href="${choice.link}" class="recipe-link">Try: ${choice.name} ✨</a>`;
+}
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About - HeartRecipes</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    /* NEW: Pinterest Background Image */
+    background: url("https://i.pinimg.com/736x/2d/7b/98/2d7b98375a82de490cd044a4d47f5710.jpg") no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+  }
+
+  nav {
+    background-color: #e91e63;
+    padding: 15px;
+    text-align: center;
+  }
+
+  nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+  }
+
+  /* Title Frame */
+  h1 {
+    font-family: 'Lobster Two', cursive;
+    font-size: 60px;
+    font-weight: 700;
+    color: #e91e63;
+    background: rgba(255, 255, 255, 0.9);
+    display: inline-block;
+    padding: 10px 40px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+  }
+
+  /* NEW: Side-by-Side Layout for the Info Boxes */
+  .info-row {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap; /* Allows boxes to stack on mobile phones */
+    margin-bottom: 40px;
+  }
+
+  /* White Frames for the text sections */
+  .info-box {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 350px;
+    text-align: left; /* Keeps lists easy to read */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  }
+
+  .info-box h2 {
+    color: #e91e63;
+    margin-top: 0;
+    font-size: 24px;
+    border-bottom: 2px solid #FCC5BB;
+    padding-bottom: 10px;
+  }
+
+  ul {
+    list-style: "💗 "; /* Custom pink heart bullet points */
+    padding-left: 20px;
+  }
+
+  li {
+    margin: 12px 0;
+    font-size: 18px;
+  }
+
+  /* NEW: Row for the three circular images */
+  .image-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+
+  .find-img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    color: white;
+    background: #e91e63;
+    margin-top: 50px;
+  }
+</style>
+</head>
+<body>
+
+<nav style="background-color: #e91e63; width: 100%; margin: 0; padding: 20px 0; display: block; box-sizing: border-box; position: relative; text-align: center;">
+    
+    <a href="index.html">
+      <img src="https://i.ibb.co/qHCLryP/Group-8.png" alt="HeartRecipes Logo" style="height: 45px; position: absolute; left: 20px; top: 50%; transform: translateY(-50%);">
+    </a>
+
+    <a href="index.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Home</a>
+    <a href="about.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">About</a>
+    <a href="quick.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Quick Recipes</a>
+    <a href="mealprep.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Meal Prep</a>
+    <a href="blog.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Blog</a>
+    <a href="credits.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Credits</a>
+    
+</nav>
+
+<div class="container">
+  <h1>About HeartRecipes</h1>
+
+  <div class="info-row">
+    <div class="info-box">
+      <h2>Who is this for?</h2>
+      <ul>
+        <li>Students</li>
+        <li>Busy professionals</li>
+        <li>People trying to eat healthier</li>
+      </ul>
+    </div>
+
+    <div class="info-box">
+      <h2>What you'll find</h2>
+      <ul>
+        <li>Quick recipes</li>
+        <li>High-protein meals</li>
+        <li>Meal prep ideas</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="image-row">
+    <img src="https://i.pinimg.com/736x/12/3f/2d/123f2da66c6c8d93ded2b63098884599.jpg" class="find-img" alt="Veggies">
+    <img src="https://i.pinimg.com/736x/8d/44/db/8d44db393580c28690489996ed23a6df.jpg" class="find-img" alt="Healthy Meal">
+    <img src="https://i.pinimg.com/736x/f1/c1/67/f1c167d5bc3e42c87936c0b16f9ed8da.jpg" class="find-img" alt="Cooking">
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 HeartRecipes</p>
+</footer>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Quick Recipes - HeartRecipes</title>
+<link href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Open Sans', sans-serif; background-color: #FCC5BB; margin: 0; text-align: center; }
+  
+  /* Navigation */
+  nav { background-color: #e91e63; padding: 15px; }
+  nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: 600; }
+  nav a:hover { border-bottom: 2px solid white; }
+
+  h1 { 
+    font-family: 'Lobster Two', cursive; 
+    font-size: 50px; 
+    color: #e91e63; 
+    background: white; 
+    display: inline-block; 
+    padding: 10px 40px; 
+    border-radius: 15px; 
+    margin-top: 30px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  }
+
+  .recipe-box { 
+    background: white; 
+    margin: 40px auto; 
+    padding: 30px; 
+    width: 300px; 
+    border-radius: 20px; 
+    display: inline-block; /* Makes them sit side-by-side if screen is wide */
+    vertical-align: top;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    margin-right: 20px;
+  }
+
+  /* Circular Image Frame */
+  .recipe-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #FCC5BB;
+    margin-bottom: 15px;
+  }
+
+  h3 { color: #e91e63; font-family: 'Lobster Two', cursive; font-size: 28px; margin: 10px 0; }
+  p { color: #555; }
+  .more-btn { 
+    background: #e91e63; 
+    color: white; 
+    padding: 10px 20px; 
+    text-decoration: none; 
+    border-radius: 25px; 
+    font-size: 14px; 
+    display: inline-block;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+
+<nav style="background-color: #e91e63; width: 100%; margin: 0; padding: 20px 0; display: block; box-sizing: border-box; position: relative; text-align: center;">
+    
+    <a href="index.html">
+      <img src="https://i.ibb.co/qHCLryP/Group-8.png" alt="HeartRecipes Logo" style="height: 45px; position: absolute; left: 20px; top: 50%; transform: translateY(-50%);">
+    </a>
+
+    <a href="index.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Home</a>
+    <a href="about.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">About</a>
+    <a href="quick.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Quick Recipes</a>
+    <a href="mealprep.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Meal Prep</a>
+    <a href="blog.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Blog</a>
+    <a href="credits.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Credits</a>
+    
+</nav>
+
+<h1>Quick Recipes</h1>
+
+<div class="recipe-container">
+  <div class="recipe-box" id="egg-toast">
+    <img src="https://i.pinimg.com/736x/4b/91/56/4b9156c6d9c5be6cde10dbf4ea6c5446.jpg" class="recipe-img" alt="Avocado Toast">
+    <h3>Avocado Egg Toast</h3>
+    <p>Time: 10 min | ~300 kcal</p>
+    <a href="#" class="more-btn">Learn more</a>
+  </div>
+
+  <div class="recipe-box" id="chicken-wrap">
+    <img src="https://i.pinimg.com/736x/3e/f7/91/3ef791d4781955c2e14d3f414003b10b.jpg" class="recipe-img" alt="Chicken Wrap">
+    <h3>Chicken Wrap</h3>
+    <p>Time: 15 min | ~400 kcal</p>
+    <a href="#" class="more-btn">Learn more</a>
+  </div>
+
+  <div class="recipe-box" id="yogurt-bowl">
+    <img src="https://i.pinimg.com/736x/a2/7e/59/a27e59cbbf7c871ad1daec2c992f8978.jpg" class="recipe-img" alt="Yogurt Bowl">
+    <h3>Greek Yogurt Bowl</h3>
+    <p>Time: 5 min | ~250 kcal</p>
+    <a href="#" class="more-btn">Learn more</a>
+  </div>
+</div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Meal Prep - HeartRecipes</title>
+<link href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Open Sans', sans-serif; background-color: #FCC5BB; margin: 0; text-align: center; }
+  nav { background-color: #e91e63; padding: 15px; }
+  nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: 600; }
+  
+  h1 { 
+    font-family: 'Lobster Two', cursive; 
+    font-size: 50px; 
+    color: #e91e63; 
+    background: white; 
+    display: inline-block; 
+    padding: 10px 40px; 
+    border-radius: 15px; 
+    margin-top: 30px; 
+  }
+
+  .recipe-box { 
+    background: white; 
+    margin: 20px auto; 
+    padding: 30px; 
+    width: 300px; 
+    border-radius: 20px; 
+    display: inline-block; 
+    vertical-align: top;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    margin-right: 20px;
+  }
+
+  .recipe-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #FCC5BB;
+    margin-bottom: 15px;
+  }
+
+  h3 { color: #e91e63; font-family: 'Lobster Two', cursive; font-size: 26px; }
+</style>
+</head>
+<body>
+
+<nav style="background-color: #e91e63; width: 100%; margin: 0; padding: 20px 0; display: block; box-sizing: border-box; position: relative; text-align: center;">
+    
+    <a href="index.html">
+      <img src="https://i.ibb.co/qHCLryP/Group-8.png" alt="HeartRecipes Logo" style="height: 45px; position: absolute; left: 20px; top: 50%; transform: translateY(-50%);">
+    </a>
+
+    <a href="index.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Home</a>
+    <a href="about.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">About</a>
+    <a href="quick.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Quick Recipes</a>
+    <a href="mealprep.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Meal Prep</a>
+    <a href="blog.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Blog</a>
+    <a href="credits.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Credits</a>
+    
+</nav>
+
+<h1>Meal Prep Ideas</h1>
+
+<div class="recipe-container">
+  <div class="recipe-box" id="chicken-rice">
+    <img src="https://i.pinimg.com/736x/d8/e9/e0/d8e9e017d3ab18265a77a51073188c8a.jpg" class="recipe-img" alt="Chicken and Rice">
+    <h3>Chicken and Rice Bowl</h3>
+    <p>Prep once, eat all week.</p>
+  </div>
+
+  <div class="recipe-box" id="egg-muffins">
+    <img src="https://i.pinimg.com/1200x/e6/0e/34/e60e34e8c94ae418d145095139715e73.jpg" class="recipe-img" alt="Egg Muffins">
+    <h3>Egg Muffins</h3>
+    <p>Easy, portable protein snack.</p>
+  </div>
+</div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog - Healthy Tips</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  body { 
+    font-family: 'Open Sans', sans-serif; 
+    background-color: #FCC5BB; 
+    margin: 0; 
+    text-align: center; 
+  }
+  
+  /* Navigation */
+  nav { 
+    background-color: #e91e63; 
+    padding: 15px; 
+  }
+  nav a { 
+    color: white; 
+    margin: 0 15px; 
+    text-decoration: none; 
+    font-weight: 600; 
+  }
+  
+  /* Blog Main Header Frame */
+  .blog-title-frame {
+    background: white;
+    display: inline-block;
+    padding: 15px 40px;
+    border-radius: 20px;
+    margin: 40px auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  }
+  h1.main-blog-title { 
+    font-family: 'Lobster Two', cursive; 
+    font-size: 50px; 
+    color: #e91e63; 
+    margin: 0;
+  }
+  
+  /* Content Container and White Frames */
+  .content-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: left; /* Aligns text within the sections */
+  }
+  
+  .blog-frame {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    position: relative; /* Essential for heart framing */
+  }
+  
+  h2.framed-title { 
+    color: #e91e63; 
+    font-family: 'Lobster Two', cursive; 
+    font-size: 28px; 
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  
+  ul {
+    list-style: "💗 "; /* Custom pink heart bullet points */
+    padding-left: 20px;
+  }
+  li {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  /* HEARTSHAPED IMAGE STYLING */
+  /* This creates a precise clipping mask */
+  .heart-img {
+    width: 200px; /* Small, consistent size */
+    height: 180px; 
+    object-fit: cover;
+    clip-path: polygon(50% 0%, 100% 35%, 82% 100%, 50% 85%, 18% 100%, 0% 35%); /* Defined heart mask */
+    float: right; /* Positions image on the right */
+    margin-left: 30px;
+    border: 5px solid #FCC5BB; /* Decorative frame border */
+    border-radius: 10px; /* Soft edges within the mask */
+  }
+  
+  /* REGULAR RECTANGLE IMAGES STYLING */
+  .rectangle-img {
+    width: 100%; /* Spans full width of the white frame */
+    max-width: 700px; /* But capped for legibility */
+    height: auto; 
+    object-fit: cover;
+    border-radius: 15px; 
+    display: block;
+    margin: 20px auto 0 auto; /* Centers the image */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+</style>
+</head>
+<body>
+<nav style="background-color: #e91e63; width: 100%; margin: 0; padding: 20px 0; display: block; box-sizing: border-box; position: relative; text-align: center;">
+    
+    <a href="index.html">
+      <img src="https://i.ibb.co/qHCLryP/Group-8.png" alt="HeartRecipes Logo" style="height: 45px; position: absolute; left: 20px; top: 50%; transform: translateY(-50%);">
+    </a>
+
+    <a href="index.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Home</a>
+    <a href="about.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">About</a>
+    <a href="quick.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Quick Recipes</a>
+    <a href="mealprep.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Meal Prep</a>
+    <a href="blog.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Blog</a>
+    <a href="credits.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Credits</a>
+    
+</nav>
+<div class="blog-title-frame">
+  <h1 class="main-blog-title">Blog - Healthy Tips for Busy Lives</h1>
+</div>
+<div class="content-section">
+  <div class="blog-frame">
+    <img src="https://i.pinimg.com/736x/b9/bf/91/b9bf9142269fd5d454a54f6a33425ef2.jpg" alt="Simple Prep Ingredients" class="heart-img">
+    <h2 class="framed-title">How to Eat Healthy on a Busy Schedule: Plan ahead and keep meals simple.</h2>
+    <ul>
+      <li>Plan meals on weekends</li>
+      <li>Shop with a list</li>
+      <li>Simple recipes with few ingredients</li>
+    </ul>
+  </div>
+  
+<div class="blog-frame">
+    <img src="https://i.pinimg.com/1200x/85/7a/9d/857a9ddad4b6ce4246c750618c905533.jpg" alt="High Protein Food Variety" class="heart-img">
+    
+    <h2 class="framed-title">5 High-Protein Foods: Eggs, chicken, yogurt, legumes</h2>
+    <ul>
+      <li>Eggs: Versatile and affordable</li>
+      <li>Chicken: Lean and easy</li>
+      <li>Greek Yogurt: Quick snack or breakfast</li>
+      <li>Legumes: Lentils, beans, and chickpeas</li>
+    </ul>
+  </div>
+  
+<div class="blog-frame">
+  <img src="https://i.pinimg.com/736x/23/78/05/237805651ab75e475b2113d24629a066.jpg" alt="Organized Meal Prep" class="heart-img">
+  
+  <h2 class="framed-title">Meal Prep Tips: Prepare meals in advance to save time</h2>
+  <ul>
+    <li>Batch cook on Sundays</li>
+    <li>Portion into containers</li>
+    <li>Use leftovers creatively</li>
+  </ul>
+</div>
+</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Credits - HeartRecipes</title>
+<link href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body style="font-family: 'Open Sans', sans-serif; background-color: #FCC5BB; margin: 0; padding: 0; text-align: center;">
+
+<nav style="background-color: #e91e63; width: 100%; margin: 0; padding: 20px 0; display: block; box-sizing: border-box; position: relative; text-align: center;">
+    
+    <a href="index.html">
+      <img src="https://i.ibb.co/qHCLryP/Group-8.png" alt="HeartRecipes Logo" style="height: 45px; position: absolute; left: 20px; top: 50%; transform: translateY(-50%);">
+    </a>
+
+    <a href="index.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Home</a>
+    <a href="about.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">About</a>
+    <a href="quick.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Quick Recipes</a>
+    <a href="mealprep.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Meal Prep</a>
+    <a href="blog.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Blog</a>
+    <a href="credits.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Credits</a>
+    
+</nav>
+
+</body>
+
+<h1 style="font-family: 'Lobster Two', cursive; font-size: 50px; color: #e91e63; background: white; display: inline-block; padding: 10px 40px; border-radius: 15px; margin: 40px 0;">
+  Image Credits
+</h1>
+
+<div style="max-width: 850px; margin: 0 auto; padding: 20px;">
+  
+  <div style="background: white; padding: 30px; border-radius: 20px; margin-bottom: 25px; text-align: left; box-shadow: 0 8px 15px rgba(0,0,0,0.1);">
+    <h2 style="font-family: 'Lobster Two', cursive; color: #e91e63; font-size: 30px; margin-top: 0;">Recipe Photography</h2>
+    <ul style="list-style: '💗 '; padding-left: 20px;">
+      <li style="margin-bottom: 10px;"><a href="https://i.pinimg.com/736x/4b/91/56/4b9156c6d9c5be6cde10dbf4ea6c5446.jpg" target="_blank" style="color: #333; text-decoration: none;"><b>Avocado Egg Toast:</b> Source Link</a></li>
+      <li style="margin-bottom: 10px;"><a href="https://i.pinimg.com/736x/3e/f7/91/3ef791d4781955c2e14d3f414003b10b.jpg" target="_blank" style="color: #333; text-decoration: none;"><b>Chicken Wrap:</b> Source Link</a></li>
+      <li style="margin-bottom: 10px;"><a href="https://i.pinimg.com/736x/a2/7e/59/a27e59cbbf7c871ad1daec2c992f8978.jpg" target="_blank" style="color: #333; text-decoration: none;"><b>Greek Yogurt Bowl:</b> Source Link</a></li>
+      <li style="margin-bottom: 10px;"><a href="https://i.pinimg.com/736x/d8/e9/e0/d8e9e017d3ab18265a77a51073188c8a.jpg" target="_blank" style="color: #333; text-decoration: none;"><b>Chicken and Rice Bowl:</b> Source Link</a></li>
+      <li style="margin-bottom: 10px;"><a href="https://i.pinimg.com/1200x/e6/0e/34/e60e34e8c94ae418d145095139715e73.jpg" target="_blank" style="color: #333; text-decoration: none;"><b>Egg Muffins:</b> Source Link</a></li>
+    </ul>
+  </div>
+
+  <div style="background: white; padding: 30px; border-radius: 20px; margin-bottom: 25px; text-align: left; box-shadow: 0 8px 15px rgba(0,0,0,0.1);">
+    <h2 style="font-family: 'Lobster Two', cursive; color: #e91e63; font-size: 30px; margin-top: 0;">Healthy Food Photography (About Page)</h2>
+    <p style="font-size: 14px; color: #666; margin-bottom: 15px;">Curated from Pinterest for the "What you'll find" section:</p>
+    <ul style="list-style: '💗 '; padding-left: 20px;">
+      <li style="margin-bottom: 10px;"><a href="https://i.pinimg.com/736x/12/3f/2d/123f2da66c6c8d93ded2b63098884599.jpg" target="_blank" style="color: #333; text-decoration: none;">Fresh Ingredients Circle Image</a></li>
+      <li style="margin-bottom: 10px;"><a href="https://i.pinimg.com/736x/8d/44/db/8d44db393580c28690489996ed23a6df.jpg" target="_blank" style="color: #333; text-decoration: none;">Healthy Meal Circle Image</a></li>
+      <li style="margin-bottom: 10px;"><a href="https://i.pinimg.com/736x/f1/c1/67/f1c167d5bc3e42c87936c0b16f9ed8da.jpg" target="_blank" style="color: #333; text-decoration: none;">Cooking/Prep Circle Image</a></li>
+    </ul>
+</html>
