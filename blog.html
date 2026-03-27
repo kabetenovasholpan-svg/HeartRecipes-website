@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog - Healthy Tips</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  body { 
+    font-family: 'Open Sans', sans-serif; 
+    background-color: #FCC5BB; 
+    margin: 0; 
+    text-align: center; 
+  }
+  
+  /* Navigation */
+  nav { 
+    background-color: #e91e63; 
+    padding: 15px; 
+  }
+  nav a { 
+    color: white; 
+    margin: 0 15px; 
+    text-decoration: none; 
+    font-weight: 600; 
+  }
+  
+  /* Blog Main Header Frame */
+  .blog-title-frame {
+    background: white;
+    display: inline-block;
+    padding: 15px 40px;
+    border-radius: 20px;
+    margin: 40px auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  }
+  h1.main-blog-title { 
+    font-family: 'Lobster Two', cursive; 
+    font-size: 50px; 
+    color: #e91e63; 
+    margin: 0;
+  }
+  
+  /* Content Container and White Frames */
+  .content-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: left; /* Aligns text within the sections */
+  }
+  
+  .blog-frame {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    position: relative; /* Essential for heart framing */
+  }
+  
+  h2.framed-title { 
+    color: #e91e63; 
+    font-family: 'Lobster Two', cursive; 
+    font-size: 28px; 
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  
+  ul {
+    list-style: "💗 "; /* Custom pink heart bullet points */
+    padding-left: 20px;
+  }
+  li {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  /* HEARTSHAPED IMAGE STYLING */
+  /* This creates a precise clipping mask */
+  .heart-img {
+    width: 200px; /* Small, consistent size */
+    height: 180px; 
+    object-fit: cover;
+    clip-path: polygon(50% 0%, 100% 35%, 82% 100%, 50% 85%, 18% 100%, 0% 35%); /* Defined heart mask */
+    float: right; /* Positions image on the right */
+    margin-left: 30px;
+    border: 5px solid #FCC5BB; /* Decorative frame border */
+    border-radius: 10px; /* Soft edges within the mask */
+  }
+  
+  /* REGULAR RECTANGLE IMAGES STYLING */
+  .rectangle-img {
+    width: 100%; /* Spans full width of the white frame */
+    max-width: 700px; /* But capped for legibility */
+    height: auto; 
+    object-fit: cover;
+    border-radius: 15px; 
+    display: block;
+    margin: 20px auto 0 auto; /* Centers the image */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+</style>
+</head>
+<body>
+<nav style="background-color: #e91e63; width: 100%; margin: 0; padding: 20px 0; display: block; box-sizing: border-box; position: relative; text-align: center;">
+    
+    <a href="index.html">
+      <img src="https://i.ibb.co/qHCLryP/Group-8.png" alt="HeartRecipes Logo" style="height: 45px; position: absolute; left: 20px; top: 50%; transform: translateY(-50%);">
+    </a>
+
+    <a href="index.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Home</a>
+    <a href="about.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">About</a>
+    <a href="quick.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Quick Recipes</a>
+    <a href="mealprep.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Meal Prep</a>
+    <a href="blog.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Blog</a>
+    <a href="credits.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Credits</a>
+    
+</nav>
+<div class="blog-title-frame">
+  <h1 class="main-blog-title">Blog - Healthy Tips for Busy Lives</h1>
+</div>
+<div class="content-section">
+  <div class="blog-frame">
+    <img src="https://i.pinimg.com/736x/b9/bf/91/b9bf9142269fd5d454a54f6a33425ef2.jpg" alt="Simple Prep Ingredients" class="heart-img">
+    <h2 class="framed-title">How to Eat Healthy on a Busy Schedule: Plan ahead and keep meals simple.</h2>
+    <ul>
+      <li>Plan meals on weekends</li>
+      <li>Shop with a list</li>
+      <li>Simple recipes with few ingredients</li>
+    </ul>
+  </div>
+  
+<div class="blog-frame">
+    <img src="https://i.pinimg.com/1200x/85/7a/9d/857a9ddad4b6ce4246c750618c905533.jpg" alt="High Protein Food Variety" class="heart-img">
+    
+    <h2 class="framed-title">5 High-Protein Foods: Eggs, chicken, yogurt, legumes</h2>
+    <ul>
+      <li>Eggs: Versatile and affordable</li>
+      <li>Chicken: Lean and easy</li>
+      <li>Greek Yogurt: Quick snack or breakfast</li>
+      <li>Legumes: Lentils, beans, and chickpeas</li>
+    </ul>
+  </div>
+  
+<div class="blog-frame">
+  <img src="https://i.pinimg.com/736x/23/78/05/237805651ab75e475b2113d24629a066.jpg" alt="Organized Meal Prep" class="heart-img">
+  
+  <h2 class="framed-title">Meal Prep Tips: Prepare meals in advance to save time</h2>
+  <ul>
+    <li>Batch cook on Sundays</li>
+    <li>Portion into containers</li>
+    <li>Use leftovers creatively</li>
+  </ul>
+</div>
+</body>
