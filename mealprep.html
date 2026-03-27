@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Meal Prep - HeartRecipes</title>
+<link href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Open Sans', sans-serif; background-color: #FCC5BB; margin: 0; text-align: center; }
+  nav { background-color: #e91e63; padding: 15px; }
+  nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: 600; }
+  
+  h1 { 
+    font-family: 'Lobster Two', cursive; 
+    font-size: 50px; 
+    color: #e91e63; 
+    background: white; 
+    display: inline-block; 
+    padding: 10px 40px; 
+    border-radius: 15px; 
+    margin-top: 30px; 
+  }
+
+  .recipe-box { 
+    background: white; 
+    margin: 20px auto; 
+    padding: 30px; 
+    width: 300px; 
+    border-radius: 20px; 
+    display: inline-block; 
+    vertical-align: top;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    margin-right: 20px;
+  }
+
+  .recipe-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #FCC5BB;
+    margin-bottom: 15px;
+  }
+
+  h3 { color: #e91e63; font-family: 'Lobster Two', cursive; font-size: 26px; }
+</style>
+</head>
+<body>
+
+<nav style="background-color: #e91e63; width: 100%; margin: 0; padding: 20px 0; display: block; box-sizing: border-box; position: relative; text-align: center;">
+    
+    <a href="index.html">
+      <img src="https://i.ibb.co/qHCLryP/Group-8.png" alt="HeartRecipes Logo" style="height: 45px; position: absolute; left: 20px; top: 50%; transform: translateY(-50%);">
+    </a>
+
+    <a href="index.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Home</a>
+    <a href="about.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">About</a>
+    <a href="quick.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Quick Recipes</a>
+    <a href="mealprep.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Meal Prep</a>
+    <a href="blog.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Blog</a>
+    <a href="credits.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Credits</a>
+    
+</nav>
+
+<h1>Meal Prep Ideas</h1>
+
+<div class="recipe-container">
+  <div class="recipe-box" id="chicken-rice">
+    <img src="https://i.pinimg.com/736x/d8/e9/e0/d8e9e017d3ab18265a77a51073188c8a.jpg" class="recipe-img" alt="Chicken and Rice">
+    <h3>Chicken and Rice Bowl</h3>
+    <p>Prep once, eat all week.</p>
+  </div>
+
+  <div class="recipe-box" id="egg-muffins">
+    <img src="https://i.pinimg.com/1200x/e6/0e/34/e60e34e8c94ae418d145095139715e73.jpg" class="recipe-img" alt="Egg Muffins">
+    <h3>Egg Muffins</h3>
+    <p>Easy, portable protein snack.</p>
+  </div>
+</div>
+
+</body>
+</html>
