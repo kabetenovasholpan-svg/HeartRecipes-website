@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About - HeartRecipes</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    /* NEW: Pinterest Background Image */
+    background: url("https://i.pinimg.com/736x/2d/7b/98/2d7b98375a82de490cd044a4d47f5710.jpg") no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+  }
+
+  nav {
+    background-color: #e91e63;
+    padding: 15px;
+    text-align: center;
+  }
+
+  nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+  }
+
+  /* Title Frame */
+  h1 {
+    font-family: 'Lobster Two', cursive;
+    font-size: 60px;
+    font-weight: 700;
+    color: #e91e63;
+    background: rgba(255, 255, 255, 0.9);
+    display: inline-block;
+    padding: 10px 40px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+  }
+
+  /* NEW: Side-by-Side Layout for the Info Boxes */
+  .info-row {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap; /* Allows boxes to stack on mobile phones */
+    margin-bottom: 40px;
+  }
+
+  /* White Frames for the text sections */
+  .info-box {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 350px;
+    text-align: left; /* Keeps lists easy to read */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  }
+
+  .info-box h2 {
+    color: #e91e63;
+    margin-top: 0;
+    font-size: 24px;
+    border-bottom: 2px solid #FCC5BB;
+    padding-bottom: 10px;
+  }
+
+  ul {
+    list-style: "💗 "; /* Custom pink heart bullet points */
+    padding-left: 20px;
+  }
+
+  li {
+    margin: 12px 0;
+    font-size: 18px;
+  }
+
+  /* NEW: Row for the three circular images */
+  .image-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+
+  .find-img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    color: white;
+    background: #e91e63;
+    margin-top: 50px;
+  }
+</style>
+</head>
+<body>
+
+<nav style="background-color: #e91e63; width: 100%; margin: 0; padding: 20px 0; display: block; box-sizing: border-box; position: relative; text-align: center;">
+    
+    <a href="index.html">
+      <img src="https://i.ibb.co/qHCLryP/Group-8.png" alt="HeartRecipes Logo" style="height: 45px; position: absolute; left: 20px; top: 50%; transform: translateY(-50%);">
+    </a>
+
+    <a href="index.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Home</a>
+    <a href="about.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">About</a>
+    <a href="quick.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Quick Recipes</a>
+    <a href="mealprep.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Meal Prep</a>
+    <a href="blog.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Blog</a>
+    <a href="credits.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 600;">Credits</a>
+    
+</nav>
+
+<div class="container">
+  <h1>About HeartRecipes</h1>
+
+  <div class="info-row">
+    <div class="info-box">
+      <h2>Who is this for?</h2>
+      <ul>
+        <li>Students</li>
+        <li>Busy professionals</li>
+        <li>People trying to eat healthier</li>
+      </ul>
+    </div>
+
+    <div class="info-box">
+      <h2>What you'll find</h2>
+      <ul>
+        <li>Quick recipes</li>
+        <li>High-protein meals</li>
+        <li>Meal prep ideas</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="image-row">
+    <img src="https://i.pinimg.com/736x/12/3f/2d/123f2da66c6c8d93ded2b63098884599.jpg" class="find-img" alt="Veggies">
+    <img src="https://i.pinimg.com/736x/8d/44/db/8d44db393580c28690489996ed23a6df.jpg" class="find-img" alt="Healthy Meal">
+    <img src="https://i.pinimg.com/736x/f1/c1/67/f1c167d5bc3e42c87936c0b16f9ed8da.jpg" class="find-img" alt="Cooking">
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 HeartRecipes</p>
+</footer>
+
+</body>
+</html>
